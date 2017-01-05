@@ -1,8 +1,8 @@
 FROM node:4
 
-MAINTAINER Bakudankun <bakudankun@gmail.com>
+MAINTAINER kyonmm <kyon.mm@gmail.com>
 
-ENV CROWI_VERSION v1.5.1
+ENV CROWI_VERSION master
 ENV NODE_ENV production
 
 RUN apt-get update \
@@ -13,7 +13,7 @@ RUN curl -SL -o /usr/local/bin/wait-for-it.sh https://raw.githubusercontent.com/
 	&& chmod +x /usr/local/bin/wait-for-it.sh
 
 RUN mkdir /usr/src/app \
-	&& curl -SL https://github.com/crowi/crowi/archive/${CROWI_VERSION}.tar.gz \
+	&& curl -SL https://github.com/kyonmm/crowi/archive/${CROWI_VERSION}.tar.gz \
 	| tar -xz -C /usr/src/app --strip-components 1
 
 WORKDIR /usr/src/app
