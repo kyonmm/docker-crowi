@@ -6,11 +6,13 @@ ENV CROWI_VERSION master
 ENV NODE_ENV production
 
 RUN apt-get update \
-	&& apt-get install -y libkrb5-dev \
+	&& apt-get install -y libkrb5-dev g++ make python\
 	&& rm -rf /var/lib/apt/lists/*
 
 RUN curl -SL -o /usr/local/bin/wait-for-it.sh https://raw.githubusercontent.com/vishnubob/wait-for-it/master/wait-for-it.sh \
 	&& chmod +x /usr/local/bin/wait-for-it.sh
+
+RUN npm config set `which python`
 
 RUN mkdir /usr/src/app \
 	&& curl -SL https://github.com/kyonmm/crowi/archive/${CROWI_VERSION}.tar.gz \
